@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/adfgvx.c
+adfgvx.h
+D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/adfgvx.h
+
+D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/adfgvx.h
+
+D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/main.c
+stdio.h
+-
+

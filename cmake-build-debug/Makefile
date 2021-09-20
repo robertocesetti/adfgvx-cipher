@@ -176,6 +176,30 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\adfgvx.dir\build.make CMakeFiles/adfgvx.dir/main.c.s
 .PHONY : main.c.s
 
+utils.obj: utils.c.obj
+.PHONY : utils.obj
+
+# target to build an object file
+utils.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\adfgvx.dir\build.make CMakeFiles/adfgvx.dir/utils.c.obj
+.PHONY : utils.c.obj
+
+utils.i: utils.c.i
+.PHONY : utils.i
+
+# target to preprocess a source file
+utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\adfgvx.dir\build.make CMakeFiles/adfgvx.dir/utils.c.i
+.PHONY : utils.c.i
+
+utils.s: utils.c.s
+.PHONY : utils.s
+
+# target to generate assembly for a file
+utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\adfgvx.dir\build.make CMakeFiles/adfgvx.dir/utils.c.s
+.PHONY : utils.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -191,6 +215,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... utils.obj
+	@echo ... utils.i
+	@echo ... utils.s
 .PHONY : help
 
 
