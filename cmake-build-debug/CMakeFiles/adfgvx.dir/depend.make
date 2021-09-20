@@ -3,10 +3,11 @@
 
 CMakeFiles/adfgvx.dir/adfgvx.c.obj: \
  ../adfgvx.c \
- ../adfgvx.h
-CMakeFiles/adfgvx.dir/main.c.obj: \
- ../main.c \
+ ../adfgvx.h \
  ../utils.h
+CMakeFiles/adfgvx.dir/main.c.obj: \
+ ../adfgvx.h \
+ ../main.c
 CMakeFiles/adfgvx.dir/utils.c.obj: \
  ../utils.c \
  ../utils.h

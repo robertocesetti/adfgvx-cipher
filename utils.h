@@ -7,6 +7,7 @@
 
 typedef struct list_struct list_st;
 
+
 /**
  * Data structure representing a list.
  */
@@ -54,7 +55,21 @@ list_st *add(list_st *lst, int value);
  */
 int contains(list_st *lst, int value);
 
-        //TODO.ELIMINARE
+//TODO.CHECK
+/**
+ * Write on a file.
+ *
+ * @param file the file.
+ * @param characters the characters.
+void fileWriter(FILE *file, char *characters);
+ */
+
+
+//TODO.ELIMINARE
 void list_print(list_st *l);
+
+void arrayPrint(int *array, int size);
+
+void matrixPrint(int **matrix, int size);
 
 #endif //ROBERTOCESETTI105114_UTILS_H

@@ -37,12 +37,12 @@ struct pair_struct {
     /**
      * first value
      */
-    int *s;
+    int s;
 
     /**
      * Second value
      */
-    int *k;
+    int k;
 };
 
 
@@ -75,6 +75,6 @@ void decode(char *key_file, char *input_file, char *output_file);
  * @param s3 value of third pair.
  * @param k3 value of third pair.
  */
-void genkey(char *keyfile, int *s1, int *k1, int *s2, int *k2, int *s3, int *k3);
+void genkey(const char *keyfile, int s1, int k1, int s2, int k2, int s3, int k3);
 
 #endif //ROBERTOCESETTI105114_ADFGVX_H

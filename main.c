@@ -1,8 +1,7 @@
-#include "utils.h"
+#include "adfgvx.h"
 
 
 int main() {
-    list_st *el2 = createList(20);
-    list_print(el2);
+    genkey("keyfile", 3, 5, 4, 7, 6, 7 );
     return 0;
 }

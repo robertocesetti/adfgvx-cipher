@@ -83,6 +83,9 @@
 		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/main.c">
 			<Option target="adfgvx"/>
 		</Unit>
+		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/pair.h">
+			<Option target="adfgvx"/>
+		</Unit>
 		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/utils.c">
 			<Option target="adfgvx"/>
 		</Unit>
