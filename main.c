@@ -1,6 +1,8 @@
-#include <stdio.h>
+#include "utils.h"
+
 
 int main() {
-    printf("Hello, World!\n");
+    list_st *el2 = createList(20);
+    list_print(el2);
     return 0;
 }

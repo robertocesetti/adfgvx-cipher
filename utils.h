@@ -16,20 +16,28 @@ struct list_struct {
 };
 
 /**
- * Create an empty list.
+ * Creates an empty list.
  * @return an empty list.
  */
 list_st *emptylist();
 
 /**
- * Check if the list is empty.
+ * Creates a list containing a given number of values.
+ * @param nelements number of elements.
+ * @return the list.
+*/
+list_st *createList(int nelements);
+
+
+/**
+ * Checks if the list is empty.
  * @param lst the list.
  * @return 1 if it's empty, 0 otherwise.
  */
 int isEmpty(list_st *lst);
 
 /**
- * Add a value on the list.
+ * Adds a value on the list.
  *
  * @param lst the list.
  * @param value the value.
@@ -38,12 +46,15 @@ int isEmpty(list_st *lst);
 list_st *add(list_st *lst, int value);
 
 /**
- * Check if the list contains the given value.
+ * Checks if the list contains the given value.
  *
  * @param lst  the list.
  * @param value the value.
  * @return 1 if the list contains the value, 0 otherwise.
  */
 int contains(list_st *lst, int value);
+
+        //TODO.ELIMINARE
+void list_print(list_st *l);
 
 #endif //ROBERTOCESETTI105114_UTILS_H
