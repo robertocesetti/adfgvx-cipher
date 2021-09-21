@@ -11,21 +11,25 @@
 
 int *permutation(int s, int k, int nOfElement);
 
+int *createArray(int nOfElement);
+
+void write(const char *filename, int *data, int size);
+
+int *read(const char *file);
+
 int **createMatrixFromArray(int *list);
 
-int *createArray(int nOfElement);
 
 void genkey(const char *keyfile, int s1, int k1, int s2, int k2, int s3, int k3) {
 
-    int *column = permutation(s1, k1, 16);
-    int *row = permutation(s2, k2, 16);
-    int *key = permutation(s3, k3, 256);
-    int **kMatrix = createMatrixFromArray(key);
-    FILE *fd = fopen(keyfile, "wb+");
-    fwrite(column, sizeof(char), 1, fd);
-    fwrite(row, sizeof(char), 1, fd);
-    fwrite(key, sizeof(char), 1, fd);
-    fclose(fd);
+    write(keyfile, permutation(s1, k1, 16), 16);
+    write(keyfile, permutation(s2, k2, 16), 16);
+    write(keyfile, permutation(s3, k3, 256), 256);
+    /**
+      arrayPrint(permutation(s1, k1, 16), 16);
+      arrayPrint(permutation(s2, k2, 16), 16);
+      matrixPrint(createMatrixFromArray(permutation(s3, k3, 256)), 16);
+   */
 }
 
 
@@ -49,6 +53,20 @@ int *createArray(int nOfElement) {
         array[i] = i;
     }
     return array;
+}
+
+void write(const char *filename, int *data, int size){
+    FILE *fd = fopen(filename, "wb");
+    fwrite(data, sizeof(char), size, fd);
+
+    fclose(fd);
+}
+
+int *read(const char *file) {
+    FILE *fd = fopen(file, "rb");
+    int *values;
+    fread(&values, sizeof(char), 1, fd);
+    return values;
 }
 
 int **createMatrixFromArray(int *list) {
