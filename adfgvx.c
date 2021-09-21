@@ -58,7 +58,6 @@ int *createArray(int nOfElement) {
 void write(const char *filename, int *data, int size){
     FILE *fd = fopen(filename, "wb");
     fwrite(data, sizeof(char), size, fd);
-
     fclose(fd);
 }
 

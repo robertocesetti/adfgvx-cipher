@@ -1,3 +1,0 @@
-C:\Users\roby_\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5080.54\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\RobertoCesetti105114.dir/objects.a
-C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\ar.exe cr CMakeFiles\RobertoCesetti105114.dir/objects.a @CMakeFiles\RobertoCesetti105114.dir\objects1.rsp
-C:\mingw-w64\x86_64-8.1.0-posix-seh-rt_v6-rev0\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\RobertoCesetti105114.dir/objects.a -Wl,--no-whole-archive -o RobertoCesetti105114.exe -Wl,--out-implib,libRobertoCesetti105114.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\RobertoCesetti105114.dir\linklibs.rsp
