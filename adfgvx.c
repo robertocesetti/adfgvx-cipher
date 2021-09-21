@@ -11,38 +11,23 @@
 
 int *permutation(int s, int k, int nOfElement);
 
-int **createMatrixFromList(int *list);
+int **createMatrixFromArray(int *list);
 
 int *createArray(int nOfElement);
 
-void writeMatrix(int **matrix, FILE *file, int nOfElements);
-
 void genkey(const char *keyfile, int s1, int k1, int s2, int k2, int s3, int k3) {
 
-    int *cList = permutation(s1, k1, 16);
-    int *rList = permutation(s2, k2, 16);
-    int *kList = permutation(s3, k3, 256);
-    int **kMatrix = createMatrixFromList(kList);
+    int *column = permutation(s1, k1, 16);
+    int *row = permutation(s2, k2, 16);
+    int *key = permutation(s3, k3, 256);
+    int **kMatrix = createMatrixFromArray(key);
     FILE *fd = fopen(keyfile, "wb+");
-    fwrite(cList, sizeof(char), 1, fd);
-    fwrite(rList, sizeof(char), 1, fd);
-    //WRITE-LIST
-    fwrite(kList, sizeof(char), 1, fd);
-    //WRITE-MATRIX
-    writeMatrix(kMatrix, fd, 16);
+    fwrite(column, sizeof(char), 1, fd);
+    fwrite(row, sizeof(char), 1, fd);
+    fwrite(key, sizeof(char), 1, fd);
     fclose(fd);
 }
 
-void writeMatrix(int **matrix, FILE *file, int nOfElements) {
-    for (int i = 0; i < nOfElements; i++) {
-        for (int j = 0; j < nOfElements; j++) {
-            //DUBBIO: &matrix[i][j]
-            fprintf(file,"%c", matrix[i][j]);
-            //fwrite(&matrix[i][j], sizeof(char), 1, file);
-        }
-        fprintf(file, "%s", "\n");
-    }
-}
 
 int *permutation(int s, int k, int nOfElement) {
     int *newArray = createArray(nOfElement);
@@ -66,7 +51,7 @@ int *createArray(int nOfElement) {
     return array;
 }
 
-int **createMatrixFromList(int *list) {
+int **createMatrixFromArray(int *list) {
     int **matrix = calloc(16, sizeof(int *));
     for (int i = 0; i < 16; i++) {
         matrix[i] = calloc(16, sizeof(int));
