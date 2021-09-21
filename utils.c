@@ -103,6 +103,7 @@ list_st *allocate_node(byte value) {
     return node;
 }
 
+//TODO
 int module(int val1, int val2) {
     int result = val1 % val2;
 

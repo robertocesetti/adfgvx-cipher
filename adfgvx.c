@@ -22,9 +22,10 @@ void genkey(const char *keyfile, int s1, int k1, int s2, int k2, int s3, int k3)
     list_st *kList = permutation(s3, k3, 256);
 
     FILE *fd = fopen(keyfile, "w");
-    fwrite(cList, sizeof(byte), 16, fd);
-    fwrite(rList, sizeof(byte), 16, fd);
-    fwrite(kList, sizeof(byte), 256, fd);
+    fseek(fd, 0, SEEK_SET);
+    fwrite(&cList, sizeof(byte), 16, fd);
+    fwrite(&rList, sizeof(byte), 16, fd);
+    fwrite(&kList, sizeof(byte), 256, fd);
     fclose(fd);
 /**
     list_print(cList);
