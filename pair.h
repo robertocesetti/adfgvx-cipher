@@ -1,8 +1,0 @@
-//
-// Created by Roberto Cesetti on 20/09/2021.
-//
-
-#ifndef ROBERTOCESETTI105114_PAIR_H
-#define ROBERTOCESETTI105114_PAIR_H
-
-#endif //ROBERTOCESETTI105114_PAIR_H

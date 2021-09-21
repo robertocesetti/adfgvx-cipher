@@ -1,1 +1,0 @@
-# Cifrario ADFGVX.
