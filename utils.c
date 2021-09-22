@@ -119,8 +119,8 @@ void file_write(list_st *data, const char *file_name) {
     FILE *written_file = fopen(file_name, "wb");
     if (written_file == NULL) {
         /* File not created */
-        printf("Unable to create file.\n");
-        exit(EXIT_FAILURE);
+        perror("Unable to create file.\n");
+        exit(-1);
     }
     while (data != NULL) {
         fputc(data->value, written_file);
