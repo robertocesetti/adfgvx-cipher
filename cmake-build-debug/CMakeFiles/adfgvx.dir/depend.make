@@ -4,10 +4,15 @@
 CMakeFiles/adfgvx.dir/adfgvx.c.obj: \
  ../adfgvx.c \
  ../adfgvx.h \
+ ../list.h \
  ../utils.h
+CMakeFiles/adfgvx.dir/list.c.obj: \
+ ../list.c \
+ ../list.h
 CMakeFiles/adfgvx.dir/main.c.obj: \
  ../adfgvx.h \
  ../main.c
 CMakeFiles/adfgvx.dir/utils.c.obj: \
+ ../list.h \
  ../utils.c \
  ../utils.h

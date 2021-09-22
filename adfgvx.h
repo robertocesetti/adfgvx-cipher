@@ -6,7 +6,6 @@
 #define ROBERTOCESETTI105114_ADFGVX_H
 
 typedef struct key_struct key_st;
-typedef struct pair_struct pair_st;
 
 /**
  * Data structure used to store the key.
@@ -27,22 +26,6 @@ struct key_struct {
      * Row
      */
     char *r;
-};
-
-/**
- * Data structure used to store pairs of value.
- */
-struct pair_struct {
-
-    /**
-     * first value
-     */
-    int s;
-
-    /**
-     * Second value
-     */
-    int k;
 };
 
 /**

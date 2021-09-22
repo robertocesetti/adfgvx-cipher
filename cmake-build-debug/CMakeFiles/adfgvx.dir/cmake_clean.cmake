@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/adfgvx.dir/adfgvx.c.obj"
+  "CMakeFiles/adfgvx.dir/list.c.obj"
   "CMakeFiles/adfgvx.dir/main.c.obj"
   "CMakeFiles/adfgvx.dir/utils.c.obj"
   "adfgvx.exe"

@@ -152,6 +152,30 @@ adfgvx.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\adfgvx.dir\build.make CMakeFiles/adfgvx.dir/adfgvx.c.s
 .PHONY : adfgvx.c.s
 
+list.obj: list.c.obj
+.PHONY : list.obj
+
+# target to build an object file
+list.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\adfgvx.dir\build.make CMakeFiles/adfgvx.dir/list.c.obj
+.PHONY : list.c.obj
+
+list.i: list.c.i
+.PHONY : list.i
+
+# target to preprocess a source file
+list.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\adfgvx.dir\build.make CMakeFiles/adfgvx.dir/list.c.i
+.PHONY : list.c.i
+
+list.s: list.c.s
+.PHONY : list.s
+
+# target to generate assembly for a file
+list.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\adfgvx.dir\build.make CMakeFiles/adfgvx.dir/list.c.s
+.PHONY : list.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -212,6 +236,9 @@ help:
 	@echo ... adfgvx.obj
 	@echo ... adfgvx.i
 	@echo ... adfgvx.s
+	@echo ... list.obj
+	@echo ... list.i
+	@echo ... list.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

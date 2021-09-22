@@ -80,10 +80,13 @@
 		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/adfgvx.h">
 			<Option target="adfgvx"/>
 		</Unit>
-		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/main.c">
+		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/list.c">
 			<Option target="adfgvx"/>
 		</Unit>
-		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/pair.h">
+		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/list.h">
+			<Option target="adfgvx"/>
+		</Unit>
+		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/main.c">
 			<Option target="adfgvx"/>
 		</Unit>
 		<Unit filename="D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/utils.c">

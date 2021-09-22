@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/adfgvx.c" "D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/cmake-build-debug/CMakeFiles/adfgvx.dir/adfgvx.c.obj"
+  "D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/list.c" "D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/cmake-build-debug/CMakeFiles/adfgvx.dir/list.c.obj"
   "D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/main.c" "D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/cmake-build-debug/CMakeFiles/adfgvx.dir/main.c.obj"
   "D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/utils.c" "D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/cmake-build-debug/CMakeFiles/adfgvx.dir/utils.c.obj"
   )

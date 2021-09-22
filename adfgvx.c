@@ -8,14 +8,13 @@
 #include "adfgvx.h"
 #include "utils.h"
 
-
 list_st *permutation(int s, int k, int nOfElement);
 
 void genkey(const char *key_file, int s1, int k1, int s2, int k2, int s3, int k3) {
-    if(key_file == NULL){
+    if (key_file == NULL) {
         key_file = "default_file";
     }
-    if(s1 >= 0 && k1 >= 0 && s2 >= 0 && k2 >= 0 && s3 >= 0 && k3 >= 0){
+    if (s1 >= 0 && k1 >= 0 && s2 >= 0 && k2 >= 0 && s3 >= 0 && k3 >= 0) {
         list_st *temp_list = concat_list(permutation(s1, k1, 16), permutation(s2, k2, 16));
         list_st *key_list = concat_list(temp_list, permutation(s3, k3, 256));
         file_write(key_list, key_file);
@@ -23,11 +22,6 @@ void genkey(const char *key_file, int s1, int k1, int s2, int k2, int s3, int k3
         perror("Incorrect values entered.\n");
         exit(-1);
     }
-
-//    list_print(cList);
-//    list_print(rList);
-//    list_print(kList);
-
 }
 
 list_st *permutation(int s, int k, int nOfElement) {
@@ -47,11 +41,15 @@ list_st *permutation(int s, int k, int nOfElement) {
     return list;
 }
 
-void encode(char *key_file, char *input_file, char *output_file){
-
+void encode(char *key_file, char *input_file, char *output_file) {
+    FILE *file_k = read_input_file(key_file);
+    FILE *file_i = read_input_file(input_file);
+    fclose(file_k);
+    fclose(file_i);
 }
 
-void decode(char *key_file, char *input_file, char *output_file){
+
+void decode(char *key_file, char *input_file, char *output_file) {
 
 }
 
