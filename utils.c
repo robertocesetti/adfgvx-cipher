@@ -76,6 +76,18 @@ list_st *remove_head(list_st *lst) {
     return temp;
 }
 
+list_st *concat_list(list_st *first_list, list_st *second_list) {
+    if (first_list == NULL && second_list == NULL) {
+        return NULL;
+    } else {
+        while (second_list != NULL) {
+            add(first_list, second_list->value);
+            second_list = second_list->next;
+        }
+        return first_list;
+    }
+}
+
 byte get(list_st *lst, int index) {
     list_st *scanner = lst;
     while (index != 0) {
@@ -103,9 +115,28 @@ list_st *allocate_node(byte value) {
     return node;
 }
 
-//TODO
+void file_write(list_st *data, const char *file_name) {
+    FILE *written_file = fopen(file_name, "wb");
+    if (written_file == NULL) {
+        /* File not created */
+        printf("Unable to create file.\n");
+        exit(EXIT_FAILURE);
+    }
+    while (data != NULL) {
+        fputc(data->value, written_file);
+        data = data->next;
+    }
+    fclose(written_file);
+}
+
+//TODO.CHECK
+
 int module(int val1, int val2) {
     int result = val1 % val2;
+
+}
+
+int absolute_value(int val) {
 
 }
 

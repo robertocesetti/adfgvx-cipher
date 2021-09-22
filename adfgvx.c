@@ -11,27 +11,23 @@
 
 list_st *permutation(int s, int k, int nOfElement);
 
-byte **create_matrix_from_array(byte *list);
-
-byte *create_array(int nOfElement);
-
 void genkey(const char *keyfile, int s1, int k1, int s2, int k2, int s3, int k3) {
+    if(keyfile == NULL){
+        keyfile = "default_file";
+    }
+    if(s1 >= 0 && k1 >= 0 && s2 >= 0 && k2 >= 0 && s3 >= 0 && k3 >= 0){
+        list_st *temp_list = concat_list(permutation(s1, k1, 16), permutation(s2, k2, 16));
+        list_st *key_list = concat_list(temp_list, permutation(s3, k3, 256));
+        file_write(key_list, keyfile);
+    } else {
+        printf("Incorrect values entered.\n");
+        exit(EXIT_FAILURE);
+    }
 
-    const list_st *cList = permutation(s1, k1, 16);
-    const list_st *rList = permutation(s2, k2, 16);
-    const list_st *kList = permutation(s3, k3, 256);
+//    list_print(cList);
+//    list_print(rList);
+//    list_print(kList);
 
-    FILE *fd = fopen(keyfile, "wb");
-    fseek(fd, 0, SEEK_SET);
-    fwrite(&cList, 1, 16, fd);
-    fwrite(&rList, 1, 16, fd);
-    fwrite(&kList, 1, 256, fd);
-    fclose(fd);
-/**
-    list_print(cList);
-    list_print(rList);
-    list_print(kList);
-*/
 }
 
 list_st *permutation(int s, int k, int nOfElement) {
@@ -51,22 +47,5 @@ list_st *permutation(int s, int k, int nOfElement) {
     return list;
 }
 
-byte *create_array(int nOfElement) {
-    byte *array = calloc(nOfElement, sizeof(byte));
-    for (int i = 0; i < nOfElement; i++) {
-        array[i] = i;
-    }
-    return array;
-}
 
-byte **create_matrix_from_array(byte *list) {
-    byte **matrix = calloc(16, sizeof(byte *));
-    for (int i = 0; i < 16; i++) {
-        matrix[i] = calloc(16, sizeof(byte));
-        for (int j = 0; j < 16; j++) {
-            matrix[i][j] = list[(i * 16) + j];
-        }
-    }
-    free(list);
-    return matrix;
-}
+
