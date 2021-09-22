@@ -73,7 +73,7 @@ list_st *remove_head(list_st *lst);
 /**
  * Returns the value of the list referred to the given index.
  *
- * @param lst tthe pointer at the head of the list.
+ * @param lst the pointer at the head of the list.
  * @param index index of the value.
  * @return the value of the list referred to the given index.
  */
@@ -96,5 +96,12 @@ int contains(list_st *lst, byte value);
  * @return
  */
 list_st *concat_list(list_st *first_list, list_st *second_list);
+
+/**
+ * Deallocate the list struct from memory.
+ *
+ * @param list the list struct to be deallocated.
+ */
+void dealloc(list_st *list);
 
 #endif //ROBERTOCESETTI105114_LIST_H

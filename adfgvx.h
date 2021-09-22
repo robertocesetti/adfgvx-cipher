@@ -5,28 +5,8 @@
 #ifndef ROBERTOCESETTI105114_ADFGVX_H
 #define ROBERTOCESETTI105114_ADFGVX_H
 
-typedef struct key_struct key_st;
 
-/**
- * Data structure used to store the key.
- */
-struct key_struct {
 
-    /**
-     * Matrix
-     */
-    char **k;
-
-    /**
-     * Column
-     */
-    char *c;
-
-    /**
-     * Row
-     */
-    char *r;
-};
 
 /**
  * Generate the key file by using 3 pairs of values.

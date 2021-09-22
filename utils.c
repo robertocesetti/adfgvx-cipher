@@ -7,6 +7,24 @@
 #include <stdio.h>
 #include "utils.h"
 
+key_st *create_key_struct() {
+    key_st *k = malloc(sizeof(key_st));
+    if (k == NULL) {
+        perror("Unable to allocate memory");
+    }
+    k->c = malloc(sizeof(list_st));
+    k->r = malloc(sizeof(list_st));
+    k->k = malloc(sizeof(list_st));
+    return k;
+}
+
+void dealloc_key_struct(key_st *key_st){
+    dealloc(key_st->c);
+    dealloc(key_st->r);
+    dealloc(key_st->k);
+    free(key_st);
+}
+
 void file_write(list_st *data, const char *file_name) {
     FILE *writing_file = fopen(file_name, "wb");
     if (writing_file == NULL) {
@@ -21,11 +39,38 @@ void file_write(list_st *data, const char *file_name) {
     fclose(writing_file);
 }
 
-FILE *read_input_file (char *file){
+key_st *read_key_file(char *file) {
+    list_st *list = read_file(file);
+    key_st *k_st = create_key_struct();
+    int i = 0;
+    while (list != NULL) {
+        if (i < 16) {
+            k_st->c = add(k_st->c, list->value);
+        } else if (i < 32) {
+            k_st->r = add(k_st->r, list->value);
+        } else {
+            k_st->k = add(k_st->k, list->value);
+        }
+        list = list->next;
+        i++;
+    }
+    dealloc(list);
+    return k_st;
+}
+
+list_st *read_file(char *file) {
     FILE *reading_file = fopen(file, "rb");
     check_file(reading_file);
     fseek(reading_file, 0, SEEK_SET);
-    return reading_file;
+    list_st *list = empty_list();
+    while (!feof(reading_file)) {
+        int c = fgetc(reading_file);
+        if(c != EOF){
+            list = add(list, fgetc(reading_file));
+        }
+    }
+    fclose(reading_file);
+    return list;
 }
 
 void check_file(const FILE *file) {

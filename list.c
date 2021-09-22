@@ -22,6 +22,7 @@ list_st *create_list(int nElements) {
         el2 = el1;
         i--;
     }
+    return el2;
 }
 
 int is_empty(list_st *lst) {
@@ -111,5 +112,13 @@ list_st *allocate_node(byte value) {
     node->value = value;
     node->next = NULL;
     return node;
+}
+
+void dealloc(list_st *list) {
+    while (list != NULL) {
+        list_st *dealloc_list = list;
+        list = list->next;
+        free(dealloc_list);
+    }
 }
 

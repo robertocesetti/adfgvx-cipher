@@ -10,6 +10,8 @@
 
 list_st *permutation(int s, int k, int nOfElement);
 
+byte encode_byte(int index_matrix, int index_file);
+
 void genkey(const char *key_file, int s1, int k1, int s2, int k2, int s3, int k3) {
     if (key_file == NULL) {
         key_file = "default_file";
@@ -42,12 +44,34 @@ list_st *permutation(int s, int k, int nOfElement) {
 }
 
 void encode(char *key_file, char *input_file, char *output_file) {
-    FILE *file_k = read_input_file(key_file);
-    FILE *file_i = read_input_file(input_file);
-    fclose(file_k);
-    fclose(file_i);
+    key_st *key = read_key_file(key_file);
+    list_st *input = read_file(input_file);
+    list_st *list_byte = empty_list();
+    int index_matrix = 0;
+    int index_file = 0;
+    list_st *ls_st = key->k;
+    while (input != NULL ){
+        while (ls_st!= NULL && input->value != ls_st->value){
+            ls_st= ls_st->next;
+            index_matrix++;
+        }
+        list_byte = add(list_byte, encode_byte(index_matrix, index_file));
+        input_file++;
+        input = input->next;
+        ls_st = key->k;
+    }
+    file_write(list_byte, output_file);
+    dealloc_key_struct(key);
+    dealloc(input);
 }
 
+byte encode_byte(int index_matrix, int index_file){
+    int j = index_matrix / 16;
+    int i = index_matrix % 16;
+    int index_c = ((i + index_file) % 16) * 16;
+    int index_r = (j + index_file) % 16;
+    return index_c + index_r;
+}
 
 void decode(char *key_file, char *input_file, char *output_file) {
 
