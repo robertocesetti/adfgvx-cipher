@@ -6,6 +6,7 @@
 #define ROBERTOCESETTI105114_UTILS_H
 
 #include "list.h"
+#include <stdio.h>
 
 typedef struct pair_struct pair_st;
 
@@ -17,14 +18,14 @@ typedef struct key_struct key_st;
 struct pair_struct {
 
     /**
-     * first value
+     * First value
      */
-    int s;
+    int fv;
 
     /**
      * Second value
      */
-    int k;
+    int sv;
 };
 
 /**
@@ -50,66 +51,69 @@ struct key_struct {
 /**
  * Create a key struct.
  *
- * @return the created key struct.
+ * @param k The key structure to be created.
+ * @return The created key struct.
  */
-key_st *create_key_struct();
+key_st *create_key_struct(key_st *k);
 
 /**
  * Deallocate the key struct from memory.
  *
- * @param key_st the key struct to be deallocated.
+ * @param key_st The key struct to be deallocated.
  */
 void dealloc_key_struct(key_st *key_st);
 
 /**
  * Read the given file.
  *
- * @param file the given file.
- * @return the pointer at the head of the list.
+ * @param file The given file.
+ * @param list The list where read values are stored.
+ * @return The Pointer at the head of the list.
  */
-list_st *read_file(char *file);
+list_st *read_file(char *file, list_st *list);
 
 /**
  * Check that the file has been opened correctly.
- * @param file the open file.
+ *
+ * @param file The open file.
  */
 void check_file(const FILE *file);
 
-/************************* TODO.CONTROLLARE.WRITE *************************/
 /**
  * Write to a file.
  *
- * @param data data to write to the file
- * @param file_name file to write to
+ * @param data Data to write to the file
+ * @param file_name File to write to
  */
 void file_write(list_st *data, const char *file_name);
 
-/************************** TODO.CONTROLLARE.READ *************************/
 /**
  * Read an input file
  *
- * @param file the read file.
- * @return the pointer to the head of the list of values saved from the file.
+ * @param file The read file.
+ * @param list The list where read values are stored.
+ * @param key The structure where the list is stored.
+ * @return The pointer to the structure that contains the values saved from the file.
  */
-key_st *read_key_file(char *file);
+key_st *read_key_file(char *file, key_st *key, list_st *list);
 
 /************************** TODO.CONTROLLARE *************************/
 /**
  * Calculate the module.
  *
- * @param val1 first value.
- * @param val2  second value.
- * @return the module between the first and the second value.
+ * @param val1 First value.
+ * @param val2  Second value.
+ * @return The module between the first and the second value.
  */
 int module(int val1, int val2);
 
 /**
  * Calculate the absolute value.
  *
- * @param val
- * @return
+ * @param value The value.
+ * @return The absolute value
  */
-int absolute_value(int val);
+int absolute_value(int value);
 
 /************************** TODO.ELIMINARE **************************/
 

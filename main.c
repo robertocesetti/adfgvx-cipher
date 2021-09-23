@@ -5,7 +5,8 @@ void print_help();
 
 int main() {
     genkey("keyfile", 3, 5, 4, 7, 6, 7);
-    encode("keyfile", "inputfile.txt", "outputfile");
+    //encode("keyfile", "inputfile.txt", "encoded");
+    //decode("keyfile", "encoded", "decoded");
     return 0;
 }
 

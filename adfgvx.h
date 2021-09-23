@@ -5,9 +5,6 @@
 #ifndef ROBERTOCESETTI105114_ADFGVX_H
 #define ROBERTOCESETTI105114_ADFGVX_H
 
-
-
-
 /**
  * Generate the key file by using 3 pairs of values.
  *

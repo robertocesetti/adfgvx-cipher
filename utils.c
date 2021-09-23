@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include "utils.h"
 
-key_st *create_key_struct() {
-    key_st *k = malloc(sizeof(key_st));
+key_st *create_key_struct(key_st *k) {
+    k = malloc(sizeof(key_st));
     if (k == NULL) {
         perror("Unable to allocate memory");
     }
@@ -18,20 +18,16 @@ key_st *create_key_struct() {
     return k;
 }
 
-void dealloc_key_struct(key_st *key_st){
-    dealloc(key_st->c);
-    dealloc(key_st->r);
-    dealloc(key_st->k);
+void dealloc_key_struct(key_st *key_st) {
+    dealloc_list_struct(key_st->c);
+    dealloc_list_struct(key_st->r);
+    dealloc_list_struct(key_st->k);
     free(key_st);
 }
 
 void file_write(list_st *data, const char *file_name) {
     FILE *writing_file = fopen(file_name, "wb");
-    if (writing_file == NULL) {
-        /* File not created */
-        perror("Unable to open file.\n");
-        exit(-1);
-    }
+    check_file(writing_file);
     while (data != NULL) {
         fputc(data->value, writing_file);
         data = data->next;
@@ -39,33 +35,30 @@ void file_write(list_st *data, const char *file_name) {
     fclose(writing_file);
 }
 
-key_st *read_key_file(char *file) {
-    list_st *list = read_file(file);
-    key_st *k_st = create_key_struct();
+key_st *read_key_file(char *file, key_st *key, list_st *list) {
+    list = read_file(file, list);
     int i = 0;
     while (list != NULL) {
         if (i < 16) {
-            k_st->c = add(k_st->c, list->value);
+            key->c = add(key->c, list->value);
         } else if (i < 32) {
-            k_st->r = add(k_st->r, list->value);
+            key->r = add(key->r, list->value);
         } else {
-            k_st->k = add(k_st->k, list->value);
+            key->k = add(key->k, list->value);
         }
         list = list->next;
         i++;
     }
-    dealloc(list);
-    return k_st;
+    dealloc_list_struct(list);
+    return key;
 }
 
-list_st *read_file(char *file) {
+list_st *read_file(char *file, list_st *list) {
     FILE *reading_file = fopen(file, "rb");
     check_file(reading_file);
-    fseek(reading_file, 0, SEEK_SET);
-    list_st *list = empty_list();
     while (!feof(reading_file)) {
         int c = fgetc(reading_file);
-        if(c != EOF){
+        if (c != EOF) {
             list = add(list, fgetc(reading_file));
         }
     }
@@ -83,17 +76,18 @@ void check_file(const FILE *file) {
 
 /************************** TODO.CONTROLLARE *************************/
 
+/**
 int module(int val1, int val2) {
     int result = val1 % val2;
-
 }
 
 int absolute_value(int val) {
 
 }
-
+*/
 /************************** TODO.ELIMINARE **************************/
 
+/**
 void list_print(list_st *l) {
     while (l != NULL) {
         printf("%d ", l->value);
@@ -118,3 +112,4 @@ void matrix_print(byte **matrix, int size) {
         printf("\n");
     }
 }
+ */

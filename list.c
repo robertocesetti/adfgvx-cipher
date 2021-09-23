@@ -11,7 +11,7 @@ list_st *empty_list() {
     return NULL;
 }
 
-list_st *create_list(int nElements) {
+list_st *create_list(list_st *list, int nElements) {
     int i = --nElements;
     list_st *el1;
     list_st *el2 = empty_list();
@@ -54,10 +54,17 @@ list_st *add(list_st *lst, byte value) {
     return lst;
 }
 
-list_st *remove_value(list_st *lst, int index) {
-    list_st *scanner = lst;
+list_st *allocate_node(byte value) {
+    list_st *node = malloc(sizeof(list_st));
+    node->value = value;
+    node->next = NULL;
+    return node;
+}
+
+list_st *remove_value(list_st *list, int index) {
+    list_st *scanner = list;
     if (index == 0) {
-        return remove_head(lst);
+        return remove_head(list);
     }
     while ((index) != 1) {
         scanner = scanner->next;
@@ -66,12 +73,12 @@ list_st *remove_value(list_st *lst, int index) {
     list_st *temp = scanner->next->next;
     free(scanner->next);
     scanner->next = temp;
-    return lst;
+    return list;
 }
 
-list_st *remove_head(list_st *lst) {
-    list_st *temp = lst->next;
-    free(lst);
+list_st *remove_head(list_st *list) {
+    list_st *temp = list->next;
+    free(list);
     return temp;
 }
 
@@ -80,15 +87,15 @@ list_st *concat_list(list_st *first_list, list_st *second_list) {
         return NULL;
     } else {
         while (second_list != NULL) {
-            add(first_list, second_list->value);
+            first_list = add(first_list, second_list->value);
             second_list = second_list->next;
         }
         return first_list;
     }
 }
 
-byte get(list_st *lst, int index) {
-    list_st *scanner = lst;
+byte get_value(list_st *list, int index) {
+    list_st *scanner = list;
     while (index != 0) {
         scanner = scanner->next;
         index--;
@@ -96,8 +103,20 @@ byte get(list_st *lst, int index) {
     return scanner->value;
 }
 
-int contains(list_st *lst, byte value) {
-    list_st *scanner = lst;
+int get_index(list_st *list, byte value) {
+    int index = 0;
+    while (list != NULL) {
+        if (list->value == value) {
+            break;
+        }
+        index++;
+        list = list->next;
+    }
+    return index;
+}
+
+int contains(list_st *list, byte value) {
+    list_st *scanner = list;
     while (scanner != NULL) {
         if (scanner->value == value) {
             return 1;
@@ -107,14 +126,7 @@ int contains(list_st *lst, byte value) {
     return 0;
 }
 
-list_st *allocate_node(byte value) {
-    list_st *node = malloc(sizeof(list_st));
-    node->value = value;
-    node->next = NULL;
-    return node;
-}
-
-void dealloc(list_st *list) {
+void dealloc_list_struct(list_st *list) {
     while (list != NULL) {
         list_st *dealloc_list = list;
         list = list->next;

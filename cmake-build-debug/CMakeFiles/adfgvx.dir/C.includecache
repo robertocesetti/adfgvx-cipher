@@ -6,19 +6,13 @@
 
 #IncludeRegexTransform: 
 
-D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/list.h
-
-D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/utils.c
+D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/list.c
 stddef.h
 -
 stdlib.h
 -
-stdio.h
--
-utils.h
-D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/utils.h
-
-D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/utils.h
 list.h
+D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/list.h
+
 D:/UNIVERSITA/Sistemi Operativi/Lab/CLion/RobertoCesetti105114/list.h
 
