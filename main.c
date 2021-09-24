@@ -1,12 +1,24 @@
 #include <stdio.h>
+#include <string.h>
 #include "adfgvx.h"
 
 void print_help();
 
-int main() {
-    genkey("keyfile", 5, 6, 2, 3, 7, 8);
-    encode("keyfile", "inputfile.txt", "encoded");
-    decode("keyfile", "encoded", "decoded");
+int main(int argc, char *argv[]) {
+    if (argc == 9 && strcmp(argv[1], "genkey") == 0) {
+        genkey(argv[2], argv[3], argv[4], argv[5], argv[6], argv[7], argv[8]);
+    } else if (argc == 5) {
+        if (strcmp(argv[1], "encode") == 0) {
+            encode(argv[2], argv[3], argv[4]);
+        } else if (strcmp(argv[1], "decode") == 0) {
+            decode(argv[2], argv[3], argv[4]);
+        } else {
+            perror("Incorrect values entered");
+            return -3;
+        }
+    } else {
+        print_help();
+    }
     return 0;
 }
 

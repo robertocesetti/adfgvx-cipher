@@ -16,7 +16,7 @@
  * @param s3 value of third pair.
  * @param k3 value of third pair.
  */
-void genkey(const char *key_file, int s1, int k1, int s2, int k2, int s3, int k3);
+void genkey(const char *key_file, char *s1, char *k1, char *s2, char *k2, char *s3, char *k3);
 
 /**
  * Encode the given input file by using the given key file and storing the result in the output_file.

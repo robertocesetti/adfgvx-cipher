@@ -13,10 +13,12 @@ byte encode_byte(key_st *key, int index_matrix, int index_file);
 
 byte decode_byte(key_st *key, byte b, int k);
 
-void genkey(const char *key_file, int s1, int k1, int s2, int k2, int s3, int k3) {
+void genkey(const char *key_file, char *s1, char *k1, char *s2, char *k2, char *s3, char *k3) {
     if (s1 >= 0 && k1 >= 0 && s2 >= 0 && k2 >= 0 && s3 >= 0 && k3 >= 0) {
         list_st *list_key = empty_list(), *temp1 = empty_list(), *temp2 = empty_list();
-        list_key = concat_list(permutation(list_key, s1, k1, 16), permutation(temp1, s2, k2, 16), permutation(temp2, s3, k3, 256) );
+        list_key = concat_list(permutation(list_key, strtol(s1, NULL, 36),strtol(k1, NULL, 36), 16),
+                               permutation(temp1, strtol(s2, NULL, 36),strtol(k2, NULL, 36),16),
+                               permutation(temp2, strtol(s3, NULL, 36),strtol(k3, NULL, 36), 256));
         file_write(list_key, key_file);
         dealloc_list_struct(list_key);
         dealloc_list_struct(temp1);
