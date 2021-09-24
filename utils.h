@@ -64,6 +64,24 @@ key_st *create_key_struct(key_st *k);
 void dealloc_key_struct(key_st *key_st);
 
 /**
+ * Write to a file.
+ *
+ * @param data Data to write to the file
+ * @param file_name File to write to
+ */
+void file_write(list_st *data, const char *file_name);
+
+/**
+ * Read an input file
+ *
+ * @param file The read file.
+ * @param list The list where read values are stored.
+ * @param key The structure where the list is stored.
+ * @return The pointer to the structure that contains the values saved from the file.
+ */
+key_st *read_key_file(key_st *key, char *file, list_st *list);
+
+/**
  * Read the given file.
  *
  * @param file The given file.
@@ -80,22 +98,12 @@ list_st *read_file(char *file, list_st *list);
 void check_file(const FILE *file);
 
 /**
- * Write to a file.
+ * Get the file's size
  *
- * @param data Data to write to the file
- * @param file_name File to write to
+ * @param file The given file.
+ * @return The file's size.
  */
-void file_write(list_st *data, const char *file_name);
-
-/**
- * Read an input file
- *
- * @param file The read file.
- * @param list The list where read values are stored.
- * @param key The structure where the list is stored.
- * @return The pointer to the structure that contains the values saved from the file.
- */
-key_st *read_key_file(char *file, key_st *key, list_st *list);
+int file_size(FILE *file);
 
 /************************** TODO.CONTROLLARE *************************/
 /**

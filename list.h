@@ -107,15 +107,17 @@ int contains(list_st *list, byte value);
  *
  * @param first_list  The pointer at the head of the first list.
  * @param second_list The pointer at the head of the second list.
- * @return The pointer at the head of the first list concatenated with the second.
+ * @param third_list The pointer at the head of the third list.
+ * @return The pointer at the head of the first list concatenated with the second and the third.
  */
-list_st *concat_list(list_st *first_list, list_st *second_list);
+list_st *concat_list(list_st *first_list, list_st *second_list, list_st *third_list);
 
 /**
  * Deallocate the list struct from memory.
  *
  * @param list the list struct to be deallocated.
+ * @return The empty list.
  */
-void dealloc_list_struct(list_st *list);
+list_st *dealloc_list_struct(list_st *list);
 
 #endif //ROBERTOCESETTI105114_LIST_H

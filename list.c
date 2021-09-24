@@ -13,16 +13,18 @@ list_st *empty_list() {
 
 list_st *create_list(list_st *list, int nElements) {
     int i = --nElements;
+    if (list != NULL) {
+        list = dealloc_list_struct(list);
+    }
     list_st *el1;
-    list_st *el2 = empty_list();
     while (i >= 0) {
         el1 = malloc(sizeof(list_st));
         el1->value = i;
-        el1->next = el2;
-        el2 = el1;
+        el1->next = list;
+        list = el1;
         i--;
     }
-    return el2;
+    return list;
 }
 
 int is_empty(list_st *lst) {
@@ -82,13 +84,21 @@ list_st *remove_head(list_st *list) {
     return temp;
 }
 
-list_st *concat_list(list_st *first_list, list_st *second_list) {
-    if (first_list == NULL && second_list == NULL) {
+list_st *concat_list(list_st *first_list, list_st *second_list, list_st *third_list) {
+    if (first_list == NULL && second_list == NULL && third_list == NULL) {
         return NULL;
     } else {
-        while (second_list != NULL) {
-            first_list = add(first_list, second_list->value);
-            second_list = second_list->next;
+        list_st *result = first_list;
+        list_st *temp = second_list;
+        list_st *temp2 = third_list;
+        int i = 0;
+        while (temp != NULL) {
+            result = add(result, temp->value);
+            temp = temp->next;
+            if (temp == NULL && i == 0) {
+                temp = temp2;
+                i++;
+            }
         }
         return first_list;
     }
@@ -126,11 +136,10 @@ int contains(list_st *list, byte value) {
     return 0;
 }
 
-void dealloc_list_struct(list_st *list) {
-    while (list != NULL) {
-        list_st *dealloc_list = list;
-        list = list->next;
-        free(dealloc_list);
+list_st *dealloc_list_struct(list_st *list) {
+    if (list != NULL) {
+        dealloc_list_struct(list->next);
+        free(list);
     }
+    return empty_list();
 }
-
