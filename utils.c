@@ -54,7 +54,7 @@ key_st *read_key_file(key_st *key, char *file, list_st *list) {
 }
 
 list_st *read_file(char *file, list_st *list) {
-    if(list != NULL){
+    if (list != NULL) {
         list = empty_list();
     }
     FILE *reading_file = fopen(file, "rb");
@@ -83,36 +83,7 @@ void check_file(const FILE *file) {
     }
 }
 
-int module(int val1, int val2){
+int module(int val1, int val2) {
     int result = val1 % val2;
     return result < 0 ? result + val2 : result;
 }
-
-/************************** TODO.ELIMINARE **************************/
-
-
-void list_print(list_st *l) {
-    while (l != NULL) {
-        printf("%d ", l->value);
-        l = l->next;
-    }
-    printf("\n\n");
-}
-/**
-void array_print(byte *array, int size) {
-    for (int i = 0; i < size; i++) {
-        printf("%3d ", array[i]);
-    }
-    printf("\n\n");
-
-}
-
-void matrix_print(byte **matrix, int size) {
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < size; j++) {
-            printf("%3d ", matrix[i][j]);
-        }
-        printf("\n");
-    }
-}
- */

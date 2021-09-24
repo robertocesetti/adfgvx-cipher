@@ -25,29 +25,21 @@ struct list_struct {
 list_st *empty_list();
 
 /**
- * Creates a list containing a given number of values.
+ * Creates a list containing a given number of values in sequence from 0 to the given number-1.
  *
  * @param nElements Number of elements.
- * @param list The list that had to be created.
+ * @param list The list to be created.
  * @return The created list.
 */
 list_st *create_list(list_st *list, int nelements);
 
 /**
- * Calcolate the size of the list.
+ * Calculate the size of the list.
  *
  * @param list The pointer at the head of the list.
  * @return The size of the list.
  */
 int sizeof_list(list_st *list);
-
-/**
- * Checks if the list is empty.
- *
- * @param lst The pointer at the head of the list.
- * @return 1 if it's empty, 0 otherwise.
- */
-int is_empty(list_st *lst);
 
 /**
  * Adds a value on the list.
@@ -94,16 +86,7 @@ byte get_value(list_st *list, int index);
 int get_index(list_st *list, byte value);
 
 /**
- * Checks if the list contains the given value.
- *
- * @param list  The pointer at the head of the list.
- * @param value The given value.
- * @return 1 if the list contains the value, 0 otherwise.
- */
-int contains(list_st *list, byte value);
-
-/**
- * Add the value of the second list at the first list.
+ * Add the value of the second and third list at the first list.
  *
  * @param first_list  The pointer at the head of the first list.
  * @param second_list The pointer at the head of the second list.

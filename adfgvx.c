@@ -9,16 +9,20 @@
 
 list_st *permutation(list_st *list, int s, int k, int nOfElement);
 
+void encode_file(list_st *input, key_st *key, FILE *output);
+
 byte encode_byte(key_st *key, int index_matrix, int index_file);
+
+void decode_file(list_st *input, key_st *key, FILE *output);
 
 byte decode_byte(key_st *key, byte b, int k);
 
 void genkey(const char *key_file, char *s1, char *k1, char *s2, char *k2, char *s3, char *k3) {
     if (s1 >= 0 && k1 >= 0 && s2 >= 0 && k2 >= 0 && s3 >= 0 && k3 >= 0) {
         list_st *list_key = empty_list(), *temp1 = empty_list(), *temp2 = empty_list();
-        list_key = concat_list(permutation(list_key, strtol(s1, NULL, 36),strtol(k1, NULL, 36), 16),
-                               permutation(temp1, strtol(s2, NULL, 36),strtol(k2, NULL, 36),16),
-                               permutation(temp2, strtol(s3, NULL, 36),strtol(k3, NULL, 36), 256));
+        list_key = concat_list(permutation(list_key, strtol(s1, NULL, 36), strtol(k1, NULL, 36), 16),
+                               permutation(temp1, strtol(s2, NULL, 36), strtol(k2, NULL, 36), 16),
+                               permutation(temp2, strtol(s3, NULL, 36), strtol(k3, NULL, 36), 256));
         file_write(list_key, key_file);
         dealloc_list_struct(list_key);
         dealloc_list_struct(temp1);
@@ -53,16 +57,20 @@ void encode(char *key_file, char *input_file, char *output_file) {
     key_st *key = malloc(sizeof(key_st));
     key = read_key_file(key, key_file, list_key);
     input = read_file(input_file, input);
+    encode_file(input, key, output);
+    dealloc_list_struct(input);
+    dealloc_list_struct(list_key);
+    dealloc_key_struct(key);
+    fclose(output);
+}
+
+void encode_file(list_st *input, key_st *key, FILE *output) {
     int index_file = 0;
     while (input != NULL) {
         fputc(encode_byte(key, get_index(key->k, input->value), index_file), output);
         index_file++;
         input = input->next;
     }
-    dealloc_list_struct(input);
-    dealloc_list_struct(list_key);
-    dealloc_key_struct(key);
-    fclose(output);
 }
 
 byte encode_byte(key_st *key, int index_matrix, int index_file) {
@@ -70,7 +78,7 @@ byte encode_byte(key_st *key, int index_matrix, int index_file) {
     int j = index_matrix / 16;
     int index_c = (module((i + index_file), 16));
     byte bc = (get_value(key->c, index_c)) * 16;
-    int index_r = module((j + index_file),16);
+    int index_r = module((j + index_file), 16);
     byte br = get_value(key->r, index_r);
     return bc | br;
 }
@@ -82,16 +90,20 @@ void decode(char *key_file, char *input_file, char *output_file) {
     key_st *key = malloc(sizeof(key_st));
     key = read_key_file(key, key_file, list_key);
     input = read_file(input_file, input);
+    decode_file(input, key, output);
+    dealloc_list_struct(input);
+    dealloc_list_struct(list_key);
+    dealloc_key_struct(key);
+    fclose(output);
+}
+
+void decode_file(list_st *input, key_st *key, FILE *output) {
     int index_file = 0;
     while (input != NULL) {
         fputc(decode_byte(key, input->value, index_file), output);
         input = input->next;
         index_file++;
     }
-    dealloc_list_struct(input);
-    dealloc_list_struct(list_key);
-    dealloc_key_struct(key);
-    fclose(output);
 }
 
 byte decode_byte(key_st *key, byte b, int k) {

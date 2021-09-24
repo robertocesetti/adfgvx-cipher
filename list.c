@@ -27,10 +27,6 @@ list_st *create_list(list_st *list, int nElements) {
     return list;
 }
 
-int is_empty(list_st *lst) {
-    return lst == NULL;
-}
-
 int sizeof_list(list_st *list) {
     list_st *scanner = list;
     int list_size = 0;
@@ -123,17 +119,6 @@ int get_index(list_st *list, byte value) {
         list = list->next;
     }
     return index;
-}
-
-int contains(list_st *list, byte value) {
-    list_st *scanner = list;
-    while (scanner != NULL) {
-        if (scanner->value == value) {
-            return 1;
-        }
-        scanner = scanner->next;
-    }
-    return 0;
 }
 
 list_st *dealloc_list_struct(list_st *list) {

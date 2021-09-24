@@ -8,25 +8,7 @@
 #include "list.h"
 #include <stdio.h>
 
-typedef struct pair_struct pair_st;
-
 typedef struct key_struct key_st;
-
-/**
- * Data structure used to store pairs of value.
- */
-struct pair_struct {
-
-    /**
-     * First value
-     */
-    int fv;
-
-    /**
-     * Second value
-     */
-    int sv;
-};
 
 /**
  * Data structure used to store the key.
@@ -43,7 +25,7 @@ struct key_struct {
     list_st *r;
 
     /**
-     * Matrix
+     * Key
      */
     list_st *k;
 };
@@ -66,7 +48,7 @@ void dealloc_key_struct(key_st *key_st);
 /**
  * Write to a file.
  *
- * @param data Data to write to the file
+ * @param data Data to be written to the file.
  * @param file_name File to write to
  */
 void file_write(list_st *data, const char *file_name);
@@ -105,31 +87,13 @@ void check_file(const FILE *file);
  */
 int file_size(FILE *file);
 
-/************************** TODO.CONTROLLARE *************************/
 /**
- * Calculate the module.
+ * Calculate the math module.
  *
  * @param val1 First value.
  * @param val2  Second value.
  * @return The module between the first and the second value.
  */
 int module(int val1, int val2);
-
-/**
- * Calculate the absolute value.
- *
- * @param value The value.
- * @return The absolute value
- */
-int absolute_value(int value);
-
-/************************** TODO.ELIMINARE **************************/
-
-
-void list_print(list_st *l);
-
-void array_print(byte *array, int size);
-
-void matrix_print(byte **matrix, int size);
 
 #endif //ROBERTOCESETTI105114_UTILS_H
