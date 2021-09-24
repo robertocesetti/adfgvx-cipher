@@ -1,28 +1,9 @@
 //
-// Created by Roberto Cesetti on 20/09/2021.
+// Created by Roberto Cesetti on 24/09/2021.
 //
 
-#include <stddef.h>
 #include <stdlib.h>
-#include <stdio.h>
-#include "utils.h"
-
-key_st *create_key_struct(key_st *k) {
-    if (k == NULL) {
-        perror("Unable to allocate memory");
-    }
-    k->c = NULL;
-    k->r = NULL;
-    k->k = NULL;
-    return k;
-}
-
-void dealloc_key_struct(key_st *key_st) {
-    key_st->c = dealloc_list_struct(key_st->c);
-    key_st->r = dealloc_list_struct(key_st->r);
-    key_st->k = dealloc_list_struct(key_st->k);
-    free(key_st);
-}
+#include "fileoperation.h"
 
 void file_write(list_st *data, const char *file_name) {
     FILE *writing_file = fopen(file_name, "wb");
@@ -77,13 +58,7 @@ int file_size(FILE *file) {
 
 void check_file(const FILE *file) {
     if (file == NULL) {
-        /* File not created */
         perror("Unable to open file.\n");
         exit(-1);
     }
-}
-
-int module(int val1, int val2) {
-    int result = val1 % val2;
-    return result < 0 ? result + val2 : result;
 }

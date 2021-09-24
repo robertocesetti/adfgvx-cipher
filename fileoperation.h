@@ -1,49 +1,13 @@
 //
-// Created by Roberto Cesetti on 20/09/2021.
+// Created by Roberto Cesetti on 24/09/2021.
 //
 
-#ifndef ROBERTOCESETTI105114_UTILS_H
-#define ROBERTOCESETTI105114_UTILS_H
+#ifndef ROBERTOCESETTI105114_FILEOPERATION_H
+#define ROBERTOCESETTI105114_FILEOPERATION_H
 
 #include "list.h"
+#include "key.h"
 #include <stdio.h>
-
-typedef struct key_struct key_st;
-
-/**
- * Data structure used to store the key.
- */
-struct key_struct {
-    /**
-     * Column
-     */
-    list_st *c;
-
-    /**
-     * Row
-     */
-    list_st *r;
-
-    /**
-     * Key
-     */
-    list_st *k;
-};
-
-/**
- * Create a key struct.
- *
- * @param k The key structure to be created.
- * @return The created key struct.
- */
-key_st *create_key_struct(key_st *k);
-
-/**
- * Deallocate the key struct from memory.
- *
- * @param key_st The key struct to be deallocated.
- */
-void dealloc_key_struct(key_st *key_st);
 
 /**
  * Write to a file.
@@ -87,13 +51,4 @@ void check_file(const FILE *file);
  */
 int file_size(FILE *file);
 
-/**
- * Calculate the math module.
- *
- * @param val1 First value.
- * @param val2  Second value.
- * @return The module between the first and the second value.
- */
-int module(int val1, int val2);
-
-#endif //ROBERTOCESETTI105114_UTILS_H
+#endif //ROBERTOCESETTI105114_FILEOPERATION_H

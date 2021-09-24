@@ -5,7 +5,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include "adfgvx.h"
-#include "utils.h"
+#include "key.h"
+#include "fileoperation.h"
 
 list_st *permutation(list_st *list, int s, int k, int nOfElement);
 
@@ -16,6 +17,15 @@ byte encode_byte(key_st *key, int index_matrix, int index_file);
 void decode_file(list_st *input, key_st *key, FILE *output);
 
 byte decode_byte(key_st *key, byte b, int k);
+
+/**
+ * Calculate the math module.
+ *
+ * @param val1 First value.
+ * @param val2  Second value.
+ * @return The module between the first and the second value.
+ */
+int module(int val1, int val2);
 
 void genkey(const char *key_file, char *s1, char *k1, char *s2, char *k2, char *s3, char *k3) {
     if (s1 >= 0 && k1 >= 0 && s2 >= 0 && k2 >= 0 && s3 >= 0 && k3 >= 0) {
@@ -116,6 +126,11 @@ byte decode_byte(key_st *key, byte b, int k) {
     int index_list = (index_r * 16) + index_c;
     list_st *list_key = key->k;
     return get_value(list_key, index_list);
+}
+
+int module(int val1, int val2) {
+    int result = val1 % val2;
+    return result < 0 ? result + val2 : result;
 }
 
 
